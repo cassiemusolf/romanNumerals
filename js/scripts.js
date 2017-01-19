@@ -7,36 +7,6 @@
 // var M = 1000;
 // var romanNumerals = [M, D, C, L, X, V, I];
 var numbers = [1, 5, 10, 50, 100, 500, 1000];
-var translate = function(number) {
-
-  var singleNumberArray = number.split("");
-  var lastDigit = parseInt(singleNumberArray[singleNumberArray.length-1]);
-  console.log(lastDigit);
-
-  if (lastDigit === numbers[0]) {
-    return "I";
-  } else if (number === numbers[0]) {
-    return "II";
-  } else if (number === numbers[1]) {
-    return "V";
-  } else if (number === numbers[1] + numbers[0]) {
-    return "VI";
-  } else if (number === numbers[1] - numbers[0]) {
-    return "IV";
-  } else if (number === numbers[1] + (numbers[0] * 3)) {
-    return "VIII";
-  } else if (number === numbers[2]) {
-    return "X";
-  } else if (number === numbers[2] - numbers[0]) {
-    return "IX";
-  } else if (number === numbers[2] + numbers[1]) {
-    return "XV";
-  } else if (number === numbers[3] + numbers[1]) {
-    return "LV";
-  } else if (number === numbers[3] + (numbers[2] - numbers[0])) {
-    return "LXI";
-  }
-}
 
 var digitTranslate = function(number) {
 
@@ -44,14 +14,33 @@ var digitTranslate = function(number) {
   var firstDigit = parseInt(singleNumberArray[0]);
   var emptyArray = [];
 
-  if (singleNumberArray.length > 3) {
+  if (singleNumberArray.length === 4) {
     for (index=0; index < firstDigit; index++) {
       emptyArray.push("M");
     }
     singleNumberArray.splice(0, 1);
-    console.log(singleNumberArray);
-    return emptyArray;
+    firstDigit = parseInt(singleNumberArray[0]);
   }
+  if (singleNumberArray.length === 3) {
+    for (index=0; index < firstDigit; index++) {
+      emptyArray.push("C");
+    }
+    singleNumberArray.splice(0,1);
+    firstDigit = parseInt(singleNumberArray[0]);
+  }
+  if (singleNumberArray.length === 2) {
+    for (index=0; index < firstDigit; index++) {
+      emptyArray.push("X");
+    }
+    singleNumberArray.splice(0,1);
+    firstDigit = parseInt(singleNumberArray[0]);
+  }
+  if (singleNumberArray.length === 1) {
+    for (index=0; index < firstDigit; index++) {
+      emptyArray.push("I");
+    }
+  }
+    return emptyArray;
 }
 
 
@@ -89,4 +78,35 @@ $ (document).ready(function() {
 //   }
 //   console.log(subtractedNumber);
 //   return translatedNumbers;
+// }
+
+// var translate = function(number) {
+//
+//   var singleNumberArray = number.split("");
+//   var lastDigit = parseInt(singleNumberArray[singleNumberArray.length-1]);
+//   console.log(lastDigit);
+//
+//   if (lastDigit === numbers[0]) {
+//     return "I";
+//   } else if (number === numbers[0]) {
+//     return "II";
+//   } else if (number === numbers[1]) {
+//     return "V";
+//   } else if (number === numbers[1] + numbers[0]) {
+//     return "VI";
+//   } else if (number === numbers[1] - numbers[0]) {
+//     return "IV";
+//   } else if (number === numbers[1] + (numbers[0] * 3)) {
+//     return "VIII";
+//   } else if (number === numbers[2]) {
+//     return "X";
+//   } else if (number === numbers[2] - numbers[0]) {
+//     return "IX";
+//   } else if (number === numbers[2] + numbers[1]) {
+//     return "XV";
+//   } else if (number === numbers[3] + numbers[1]) {
+//     return "LV";
+//   } else if (number === numbers[3] + (numbers[2] - numbers[0])) {
+//     return "LXI";
+//   }
 // }
