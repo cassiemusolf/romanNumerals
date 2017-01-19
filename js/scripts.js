@@ -11,6 +11,8 @@ var checkNumber = function(number) {
   var goodNumber = true;
   if (number >= 4000){
     goodNumber = false;
+  } else {
+    assignRomanNumerals(number);
   }
   return goodNumber;
 }
@@ -18,12 +20,13 @@ var checkNumber = function(number) {
 var assignRomanNumerals = function(number) {
   var translatedNumbers = [];
   for(var index=0; index < romanNumerals.length; index++) {
-    if (number % romanNumerals[index] > romanNumerals[index]) {
-      var subtractedNumber = number - romanNumerals[index];
+    var subtractedNumber = number;
+    if (subtractedNumber >= romanNumerals[index]) {
+      subtractedNumber = subtractedNumber - romanNumerals[index];
       translatedNumbers.push(romanNumerals[index]);
     }
-  }
-} console.log(subtractedNumber);
+  } return translatedNumbers;
+}
 
 
 $ (document).ready(function() {
