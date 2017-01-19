@@ -74,3 +74,16 @@ var digitTranslate = function(number) {
   return translatedFinal;
 
 }
+
+
+
+
+$ (document).ready(function() {
+  $("form#romanNumerals").submit(function(event){
+    event.preventDefault();
+
+    var userInput = $("input#number1").val();
+    var result = digitTranslate(userInput);
+    $("#results").text(result);
+  });
+});
