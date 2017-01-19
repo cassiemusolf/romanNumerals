@@ -15,6 +15,15 @@ var checkNumber = function(number) {
   return goodNumber;
 }
 
+var assignRomanNumerals = function(number) {
+  var translatedNumbers = [];
+  for(var index=0; index < romanNumerals.length; index++) {
+    if (number % romanNumerals[index] > romanNumerals[index]) {
+      var subtractedNumber = number - romanNumerals[index];
+      translatedNumbers.push(romanNumerals[index]);
+    }
+  }
+} console.log(subtractedNumber);
 
 
 $ (document).ready(function() {
